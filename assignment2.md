@@ -20,3 +20,4 @@
 | VS Code | _fill in_ | ✅ |
 | Node.js | _fill in_ | ✅ |
 | Live Server | _fill in_ | ✅ |
+<img src="Screenshot 2026-10-22 095046.png">
