@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive product listing built using CSS Flexbox and flex-wrap.">
+
+  <title>ShopEasy - Product Listing</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f8;
+      color: #222;
+    }
+
+    /* Website header */
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem 2rem;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    header p {
+      margin: 0.4rem 0 0;
+      color: #dddddd;
+    }
+
+    /* Product listing using Flexbox */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 1.25rem;
+
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* Individual product card */
+    .product {
+      flex: 1 1 240px;
+      max-width: 300px;
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .product img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    /* Product information */
+    .product__body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .product__body h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .product__body p {
+      margin: 0 0 1rem;
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Keep price and button at the bottom */
+    .product__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.05rem;
+      font-weight: bold;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      background: #ff6b35;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e65320;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #222;
+      outline-offset: 3px;
+    }
+
+    /* Small-screen adjustments */
+    @media (max-width: 480px) {
+      header {
+        padding: 1rem;
+      }
+
+      .products {
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .product {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+
+    footer {
+      padding: 1rem;
+      text-align: center;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>ShopEasy</h1>
+    <p>Find the right products for your everyday needs.</p>
+  </header>
+
+  <main>
+    <section class="products" aria-label="Available products">
+
+      <article class="product">
+        <img
+          src="https://picsum.photos/id/1/400/300"
+          alt="Laptop on a desk"
+          loading="lazy"
+        >
+        <div class="product__body">
+          <h2>Laptop Pro 14</h2>
+          <p>Fast, lightweight and made for students and developers.</p>
+          <div class="product__footer">
+            <span class="price">₹64,999</span>
+            <button type="button">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <img
+          src="https://picsum.photos/id/3/400/300"
+          alt="Computer desk setup"
+          loading="lazy"
+        >
+        <div class="product__body">
+          <h2>Mechanical Keyboard</h2>
+          <p>Tactile switches, RGB backlighting and comfortable typing.</p>
+          <div class="product__footer">
+            <span class="price">₹4,499</span>
+            <button type="button">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <img
+          src="https://picsum.photos/id/26/400/300"
+          alt="Watch beside a notebook"
+          loading="lazy"
+        >
+        <div class="product__body">
+          <h2>Smart Watch</h2>
+          <p>Track your daily activity and monitor your sleep.</p>
+          <div class="product__footer">
+            <span class="price">₹3,299</span>
+            <button type="button">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <img
+          src="https://picsum.photos/id/96/400/300"
+          alt="Headphones on a table"
+          loading="lazy"
+        >
+        <div class="product__body">
+          <h2>Headphones</h2>
+          <p>Enjoy your music with noise cancellation and long battery life.</p>
+          <div class="product__footer">
+            <span class="price">₹2,799</span>
+            <button type="button">Add</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <img
+          src="https://picsum.photos/id/250/400/300"
+          alt="Camera lens close-up"
+          loading="lazy"
+        >
+        <div class="product__body">
+          <h2>DSLR Camera</h2>
+          <p>Capture detailed photos with a 24 MP sensor and 4K video.</p>
+          <div class="product__footer">
+            <span class="price">₹42,000</span>
+            <button type="button">Add</button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 ShopEasy. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>

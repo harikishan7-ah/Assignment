@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive product grid that reflows automatically using CSS Grid.">
+
+  <title>ShopEase - Responsive Product Grid</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      padding: 1.25rem 5%;
+      background: #1f2a44;
+      color: #fff;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+    }
+
+    .header p {
+      color: #dce3f5;
+      font-size: 0.9rem;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      color: #1f2a44;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-heading p {
+      color: #666;
+    }
+
+    /* Responsive product grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Product card */
+    .product {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.13);
+    }
+
+    .product img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #e9ecf3;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .product-info h3 {
+      color: #1f2a44;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-info p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2b3a67;
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      padding: 0.6rem 0.9rem;
+      background: #3b5bdb;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2b46b5;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #8da4ff;
+      outline-offset: 3px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 2rem;
+      padding: 1.25rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Smaller screens */
+    @media (max-width: 500px) {
+      main {
+        padding: 1.25rem 1rem;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .header {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>ShopEase</h1>
+    <p>Discover products for everyday life</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="products-heading">
+
+      <div class="section-heading">
+        <h2 id="products-heading">Featured Products</h2>
+        <p>Explore our collection of popular products.</p>
+      </div>
+
+      <div class="products">
+
+        <article class="product">
+          <img
+            src="https://picsum.photos/id/1/400/300"
+            alt="Laptop on a desk"
+            loading="lazy"
+          >
+          <div class="product-info">
+            <h3>Laptop Pro</h3>
+            <p>A lightweight laptop for study and everyday work.</p>
+            <div class="product-bottom">
+              <span class="price">₹64,999</span>
+              <button type="button">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://picsum.photos/id/3/400/300"
+            alt="Computer workspace"
+            loading="lazy"
+          >
+          <div class="product-info">
+            <h3>Keyboard</h3>
+            <p>A comfortable keyboard for typing and productivity.</p>
+            <div class="product-bottom">
+              <span class="price">₹4,499</span>
+              <button type="button">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://picsum.photos/id/250/400/300"
+            alt="Camera lens close-up"
+            loading="lazy"
+          >
+          <div class="product-info">
+            <h3>Digital Camera</h3>
+            <p>Capture everyday moments with detailed photographs.</p>
+            <div class="product-bottom">
+              <span class="price">₹42,000</span>
+              <button type="button">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://picsum.photos/id/96/400/300"
+            alt="Headphones on a table"
+            loading="lazy"
+          >
+          <div class="product-info">
+            <h3>Headphones</h3>
+            <p>Enjoy music and audio with comfortable headphones.</p>
+            <div class="product-bottom">
+              <span class="price">₹2,799</span>
+              <button type="button">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://picsum.photos/id/26/400/300"
+            alt="Watch beside a notebook"
+            loading="lazy"
+          >
+          <div class="product-info">
+            <h3>Smart Watch</h3>
+            <p>Keep track of your daily activity and notifications.</p>
+            <div class="product-bottom">
+              <span class="price">₹3,299</span>
+              <button type="button">View</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product">
+          <img
+            src="https://picsum.photos/id/21/400/300"
+            alt="Books arranged on a shelf"
+            loading="lazy"
+          >
+          <div class="product-info">
+            <h3>Study Essentials</h3>
+            <p>Useful everyday items for your study desk.</p>
+            <div class="product-bottom">
+              <span class="price">₹999</span>
+              <button type="button">View</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 ShopEase. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>

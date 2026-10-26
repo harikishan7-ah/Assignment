@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fixing CSS overflow and responsive layout problems">
+    <title>Fixing Overflow Problems</title>
+
+    <style>
+        /* Apply border-box sizing to all elements */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* Responsive images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+
+        /* Main wrapper */
+        .wrapper {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #1d3557;
+            text-align: center;
+        }
+
+        /* Responsive columns */
+        .column {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #1d3557;
+            margin-bottom: 1rem;
+            background: #ffffff;
+            border-radius: 8px;
+            min-width: 0;
+        }
+
+        h2 {
+            color: #1d3557;
+            margin-top: 0;
+        }
+
+        /* Prevent long words and URLs from overflowing */
+        .long-text {
+            overflow-wrap: anywhere;
+        }
+
+        /* Allow wide tables to scroll horizontally */
+        .table-scroll {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #e1eaf7;
+        }
+
+        /* Scroll content inside a fixed-height box */
+        .fixed-box {
+            height: 90px;
+            overflow-y: auto;
+            border: 1px solid #999;
+            padding: 0.5rem;
+            background: #f9fafc;
+        }
+
+        /* Long code lines scroll horizontally */
+        pre {
+            max-width: 100%;
+            overflow-x: auto;
+            background: #eeeeee;
+            padding: 0.75rem;
+            border-radius: 4px;
+            white-space: pre;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        /* Mobile screen adjustments */
+        @media (max-width: 480px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            .column {
+                padding: 0.75rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="wrapper">
+
+        <h1>Overflow - Fixed</h1>
+
+        <!-- Image overflow fix -->
+        <section class="column">
+            <h2>Responsive Image</h2>
+            <img
+                src="https://picsum.photos/id/1011/1000/400"
+                alt="A rower on a calm lake">
+            <p>The image automatically fits inside its container.</p>
+        </section>
+
+        <!-- Long text overflow fix -->
+        <section class="column long-text">
+            <h2>Long Unbroken Text</h2>
+            <p>
+                https://www.example.com/this/is/a/very/long/url/that/would/normally/stretch/the/layout/sideways/forever/and/ever
+            </p>
+        </section>
+
+        <!-- Table overflow fix -->
+        <section class="column">
+            <h2>Wide Table</h2>
+
+            <p>Scroll horizontally inside the table area if needed.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Course</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Harikishan Yadav</td>
+                            <td>harikishanyadav076@gmail.com</td>
+                            <td>BAREILLY UTTAR PRADESH</td>
+                            <td>BCA AI</td>
+                            <td>2029</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fixed-height overflow fix -->
+        <section class="column">
+            <h2>Fixed-Height Box</h2>
+
+            <div class="fixed-box">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit
+                esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+        </section>
+
+        <!-- Code block overflow fix -->
+        <section class="column">
+            <h2>Code Block</h2>
+
+            <pre><code>const message = "This line is intentionally very long so that it would overflow the container if not for overflow-x: auto";</code></pre>
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive navbar and hero section using CSS Flexbox.">
+
+  <title>CloudNine | Responsive Navbar and Hero</title>
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #1b263b;
+      line-height: 1.6;
+    }
+
+    /* Navigation bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0077b6;
+      text-decoration: none;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #1b263b;
+      font-weight: 500;
+    }
+
+    .links a:hover {
+      color: #0077b6;
+    }
+
+    .links .cta {
+      background: #0077b6;
+      color: #ffffff;
+      padding: 0.6rem 1.1rem;
+      border-radius: 6px;
+    }
+
+    .links .cta:hover {
+      background: #005f91;
+      color: #ffffff;
+    }
+
+    /* Mobile menu checkbox */
+    #toggle {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    .burger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #0077b6;
+    }
+
+    #toggle:focus-visible + .burger {
+      outline: 3px solid #0077b6;
+      outline-offset: 4px;
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .hero__text {
+      flex: 1;
+    }
+
+    .hero__text h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero__text p {
+      max-width: 45ch;
+      margin-bottom: 1.5rem;
+      color: #4a5568;
+      font-size: 1.05rem;
+    }
+
+    /* Hero buttons */
+    .hero__btns {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn--primary {
+      background: #0077b6;
+      color: #ffffff;
+    }
+
+    .btn--primary:hover {
+      background: #005f91;
+    }
+
+    .btn--ghost {
+      border: 2px solid #0077b6;
+      color: #0077b6;
+    }
+
+    .btn--ghost:hover {
+      background: #eaf7ff;
+    }
+
+    /* Hero image */
+    .hero__img {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero__img img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #0077b6;
+      outline-offset: 4px;
+    }
+
+    /* Tablet and mobile screens */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 1.25rem;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 10;
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+
+        padding: 1.25rem;
+        background: #ffffff;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      #toggle:checked ~ .links {
+        display: flex;
+      }
+
+      .links a {
+        display: block;
+        padding: 0.4rem;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+        padding: 2.5rem 1.25rem;
+      }
+
+      .hero__text,
+      .hero__img {
+        width: 100%;
+      }
+
+      .hero__text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero__btns {
+        justify-content: center;
+      }
+    }
+
+    /* Extra-small screens */
+    @media (max-width: 380px) {
+      .hero__btns {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation bar -->
+  <nav class="navbar" aria-label="Main navigation">
+
+    <a href="#" class="logo">CloudNine</a>
+
+    <input type="checkbox" id="toggle">
+
+    <label for="toggle" class="burger" aria-label="Toggle navigation menu">
+      ☰
+    </label>
+
+    <ul class="links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a class="cta" href="#get-started">Get Started</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- Hero section -->
+  <header class="hero" id="about">
+
+    <div class="hero__text">
+      <h1>Build faster with the cloud you can trust.</h1>
+
+      <p>
+        Deploy, scale and monitor your applications in minutes.
+        Spend less time managing servers and more time building great products.
+      </p>
+
+      <div class="hero__btns">
+        <a class="btn btn--primary" href="#get-started">
+          Start Free
+        </a>
+
+        <a class="btn btn--ghost" href="#features">
+          Watch Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__img">
+      <img
+        src="https://picsum.photos/id/180/700/500"
+        alt="Laptop on a desk"
+      >
+    </div>
+
+  </header>
+
+</body>
+
+</html>

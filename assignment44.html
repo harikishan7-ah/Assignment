@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bloom Café serves fresh coffee, homemade bakes, and warm moments in Meerut.">
+  <title>Bloom Café | Fresh Coffee, Warm Moments</title>
+
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --cream: #fbf5ec;
+      --brown: #4a2c1a;
+      --green: #5b8c5a;
+      --gold: #b77a16;
+      --white: #ffffff;
+      --radius: 14px;
+    }
+
+    /* ===== BASE STYLES ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.65;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1150px, 92%);
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      min-height: 44px;
+      padding: 0.8rem 1.8rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #8f5d0d;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    /* ===== HEADER / NAVIGATION ===== */
+    .site-header {
+      padding-block: 1rem;
+      background: var(--cream);
+    }
+
+    .site-header .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .logo {
+      color: var(--green);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .site-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .site-nav a:hover {
+      color: var(--green);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding-block: 4rem;
+    }
+
+    .hero h1 {
+      margin-bottom: 1rem;
+      font-size: 3.4rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    /* ===== MENU SECTION ===== */
+    .menu {
+      padding-block: 4rem;
+      background: var(--white);
+    }
+
+    .menu__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .dish {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--cream);
+    }
+
+    .dish img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .dish__body {
+      padding: 1.25rem;
+    }
+
+    .dish__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .dish__price {
+      color: var(--green);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      padding-block: 4rem;
+    }
+
+    .about .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: var(--radius);
+    }
+
+    .about h2 {
+      text-align: left;
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact {
+      padding-block: 3rem;
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 1rem;
+    }
+
+    .contact .btn {
+      margin-top: 1rem;
+      background: var(--brown);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      padding-block: 1.5rem;
+    }
+
+    .site-footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* ===== RESPONSIVE BASE SUPPORT ===== */
+    @media (max-width: 850px) {
+      .hero .wrap,
+      .about .wrap {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .menu__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-header .wrap {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .site-nav ul {
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .hero .wrap {
+        padding-block: 2.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+      }
+
+      .menu__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about,
+      .menu {
+        padding-block: 2.5rem;
+      }
+
+      .site-footer .wrap {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header and navigation -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="#home">🌿 Bloom Café</a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div>
+          <h1>Fresh coffee. Warm moments.</h1>
+          <p>
+            Small-batch roasts and homemade bakes, served in the
+            heart of Meerut.
+          </p>
+          <a class="btn" href="#menu">See Our Menu</a>
+        </div>
+
+        <img
+          src="https://picsum.photos/id/225/800/600"
+          alt="Coffee shop atmosphere"
+        >
+      </div>
+    </section>
+
+    <!-- Menu section -->
+    <section class="menu" id="menu">
+      <div class="wrap">
+        <h2>Our Favourites</h2>
+
+        <div class="menu__grid">
+          <article class="dish">
+            <img
+              src="https://picsum.photos/id/1060/500/400"
+              alt="Coffee served in a cup"
+              loading="lazy"
+            >
+            <div class="dish__body">
+              <div class="dish__row">
+                <h3>Signature Latte</h3>
+                <span class="dish__price">₹180</span>
+              </div>
+              <p>Double espresso with silky steamed milk.</p>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img
+              src="https://picsum.photos/id/292/500/400"
+              alt="Fresh bakery treats"
+              loading="lazy"
+            >
+            <div class="dish__body">
+              <div class="dish__row">
+                <h3>Butter Croissant</h3>
+                <span class="dish__price">₹120</span>
+              </div>
+              <p>Baked every morning, flaky and golden.</p>
+            </div>
+          </article>
+
+          <article class="dish">
+            <img
+              src="https://picsum.photos/id/312/500/400"
+              alt="Dessert served at a café"
+              loading="lazy"
+            >
+            <div class="dish__body">
+              <div class="dish__row">
+                <h3>Chocolate Cake</h3>
+                <span class="dish__price">₹210</span>
+              </div>
+              <p>A rich chocolate treat for your coffee break.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About section -->
+    <section class="about" id="about">
+      <div class="wrap">
+        <img
+          src="https://picsum.photos/id/431/700/500"
+          alt="Comfortable café interior"
+          loading="lazy"
+        >
+
+        <div>
+          <h2>Our Story</h2>
+          <p>
+            Bloom Café began as a tiny corner stall in 2019.
+            Today, it is a cosy space where students, artists,
+            and families meet over good food and great coffee.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2>Visit Us</h2>
+        <p>12 Garden Road, Meerut · Open daily 8 AM – 10 PM</p>
+        <a class="btn" href="tel:+919000000000">Call to Reserve</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; 2026 Bloom Café</span>
+      <span>Instagram · Facebook</span>
+    </div>
+  </footer>
+
+</body>
+</html>

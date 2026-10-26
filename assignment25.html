@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Styled multi-page website with design choices">
+    <title>Styled Multi-Page Project</title>
+
+    <style>
+        :root {
+            --primary: #1f3a93;
+            --accent: #f4a261;
+            --bg: #f8f9fc;
+            --text: #222222;
+            --surface: #ffffff;
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding-bottom: 2px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            border-bottom: 2px solid var(--accent);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .page {
+            display: none;
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .page:target,
+        body:not(:has(.page:target)) #home {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.25rem;
+            border: 1px solid #bbbbbb;
+            border-radius: 4px;
+            font: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 1px;
+        }
+
+        button {
+            background: var(--accent);
+            color: #222222;
+            border: 0;
+            padding: 0.7rem 1.4rem;
+            border-radius: var(--radius);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button:hover {
+            filter: brightness(0.92);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            padding: 0.7rem;
+            text-align: left;
+        }
+
+        th {
+            background: #eef1fb;
+        }
+
+        .note {
+            background: #fff8ec;
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #666666;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .page {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Harikishan's Site</h1>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#register">Register</a>
+            <a href="#contact">Contact</a>
+            <a href="#design">Design Note</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Home Section -->
+        <section id="home" class="page">
+            <h2>Home</h2>
+            <p>Welcome to my styled multi-page website!</p>
+            <p>
+                I am a BCA Artificial Intelligence student learning
+                HTML, CSS, Java and web development.
+                This project demonstrates page navigation,
+                forms, tables and modern CSS styling.
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page">
+            <h2>About Me</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>Harikishan Yadav</td>
+                    </tr>
+                    <tr>
+                        <th>Course</th>
+                        <td>BCA - Artificial Intelligence</td>
+                    </tr>
+                    <tr>
+                        <th>Skills</th>
+                        <td>HTML, CSS, Java (Learning)</td>
+                    </tr>
+                    <tr>
+                        <th>Interests</th>
+                        <td>Web Development, AI and Programming</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="page">
+            <h2>Student Registration</h2>
+
+            <form action="#" method="get">
+                <label for="student-name">Full Name</label>
+                <input type="text" id="student-name"
+                    name="student-name" required>
+
+                <label for="student-email">Email Address</label>
+                <input type="email" id="student-email"
+                    name="student-email" required>
+
+                <label for="course">Choose Course</label>
+                <select id="course" name="course">
+                    <option value="bca-ai">BCA Artificial Intelligence</option>
+                    <option value="bca">BCA</option>
+                    <option value="mca">MCA</option>
+                </select>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p><small>
+                Demonstration form only; it does not save registration
+                details to a database.
+            </small></p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page">
+            <h2>Contact Me</h2>
+
+            <p>Email:
+                <a href="mailto:harikishanyadav076@gmail.com">
+                    harikishanyadav076@gmail.com
+                </a>
+            </p>
+
+            <form action="#" method="get">
+                <label for="contact-name">Your Name</label>
+                <input type="text" id="contact-name" name="name" required>
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message"
+                    rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+
+            <p><small>
+                Demonstration form only; no message is sent or stored.
+            </small></p>
+        </section>
+
+        <!-- Design Choices Section -->
+        <section id="design" class="page">
+            <h2>Design Choices</h2>
+
+            <div class="note">
+                <p>
+                    <strong>Colour:</strong>
+                    Deep blue represents trust and professionalism.
+                    Orange highlights buttons and important actions.
+                </p>
+
+                <p>
+                    <strong>Typography:</strong>
+                    The system font stack loads quickly and
+                    provides readable text. A line-height of 1.6
+                    improves readability.
+                </p>
+
+                <p>
+                    <strong>Layout:</strong>
+                    The content width is limited to 800px.
+                    White cards on a light background create
+                    a clean and organised appearance.
+                </p>
+
+                <p>
+                    <strong>Navigation:</strong>
+                    The navigation links use HTML fragment links
+                    such as #home and #about to display each section.
+                </p>
+
+                <p>
+                    <strong>Responsiveness:</strong>
+                    A media query adjusts the layout for smaller
+                    screens such as mobile phones.
+                </p>
+
+                <p>
+                    <strong>Maintainability:</strong>
+                    CSS variables store the main colours and border
+                    radius so they can be changed in one place.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <small>
+            &copy; 2026 Harikishan Yadav | Styled Multi-Page Project
+        </small>
+    </footer>
+
+</body>
+</html>

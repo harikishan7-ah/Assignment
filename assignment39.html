@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive online store with a header, sidebar and CSS Grid product layout.">
+  <title>ShopGrid - Online Store</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fb;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+
+    /* Main page layout */
+    .page {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      grid-area: header;
+      background: #14213d;
+      color: white;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header form {
+      width: min(380px, 55%);
+    }
+
+    header input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #d7dce7;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    /* Sidebar */
+    aside {
+      grid-area: sidebar;
+      background: white;
+      padding: 24px 20px;
+      border-right: 1px solid #e2e5ed;
+    }
+
+    aside h2 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    aside ul {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    aside li {
+      margin: 5px 0;
+    }
+
+    aside a {
+      display: block;
+      padding: 9px 10px;
+      color: #4b5563;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    aside a:hover,
+    aside a:focus {
+      background: #eaf0ff;
+      color: #2547a8;
+    }
+
+    /* Main content */
+    main {
+      grid-area: main;
+      min-width: 0;
+      padding: 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h1 {
+      font-size: 1.7rem;
+    }
+
+    .section-heading p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive product grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 22px;
+    }
+
+    /* Product card */
+    .product {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      padding: 14px;
+      border: 1px solid #e8eaf0;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(20, 33, 61, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(20, 33, 61, 0.12);
+    }
+
+    .product img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #eef1f7;
+    }
+
+    .product h2 {
+      font-size: 1.05rem;
+      margin: 14px 0 5px;
+    }
+
+    .product .description {
+      color: #6b7280;
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+
+    .product .price {
+      color: #087f5b;
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin-top: auto;
+      margin-bottom: 12px;
+    }
+
+    .product button {
+      width: 100%;
+      padding: 10px;
+      background: #2547a8;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .product button:hover {
+      background: #193680;
+    }
+
+    .product button:focus-visible {
+      outline: 3px solid #91a9ff;
+      outline-offset: 3px;
+    }
+
+    /* Footer */
+    footer {
+      grid-area: footer;
+      background: #14213d;
+      color: #d1d5db;
+      text-align: center;
+      padding: 18px;
+    }
+
+    /* Tablet layout */
+    @media (max-width: 850px) {
+      .page {
+        grid-template-columns: 190px minmax(0, 1fr);
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .products {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 16px;
+      }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 600px) {
+      .page {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+          "header"
+          "sidebar"
+          "main"
+          "footer";
+      }
+
+      header {
+        padding: 16px;
+        flex-wrap: wrap;
+      }
+
+      header form {
+        width: 100%;
+      }
+
+      aside {
+        border-right: none;
+        border-bottom: 1px solid #e2e5ed;
+        padding: 16px;
+      }
+
+      aside ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+
+      aside li {
+        margin: 0;
+      }
+
+      main {
+        padding: 16px;
+      }
+
+      .section-heading h1 {
+        font-size: 1.4rem;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .product {
+        padding: 10px;
+      }
+
+      .product h2 {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .products {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <div class="logo">🛍️ ShopGrid</div>
+
+      <form role="search" action="#" method="get">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          aria-label="Search products">
+      </form>
+    </header>
+
+    <aside>
+      <h2>Categories</h2>
+      <ul>
+        <li><a href="#electronics">Electronics</a></li>
+        <li><a href="#clothing">Clothing</a></li>
+        <li><a href="#home">Home & Living</a></li>
+        <li><a href="#sports">Sports</a></li>
+      </ul>
+
+      <h2>Price Range</h2>
+      <ul>
+        <li><a href="#products">Under ₹500</a></li>
+        <li><a href="#products">₹500 – ₹2,000</a></li>
+        <li><a href="#products">Above ₹2,000</a></li>
+      </ul>
+    </aside>
+
+    <main id="products">
+      <div class="section-heading">
+        <div>
+          <h1>All Products</h1>
+          <p>Explore our popular collection</p>
+        </div>
+      </div>
+
+      <div class="products">
+
+        <article class="product" id="clothing">
+          <img src="https://picsum.photos/id/103/400/400"
+            alt="Product image representing sneakers">
+          <h2>Sneakers</h2>
+          <p class="description">Comfortable everyday footwear.</p>
+          <p class="price">₹2,499</p>
+          <button type="button">View Product</button>
+        </article>
+
+        <article class="product">
+          <img src="https://picsum.photos/id/1070/400/400"
+            alt="Product image representing denim jeans">
+          <h2>Denim Jeans</h2>
+          <p class="description">Classic style for everyday wear.</p>
+          <p class="price">₹1,299</p>
+          <button type="button">View Product</button>
+        </article>
+
+        <article class="product" id="sports">
+          <img src="https://picsum.photos/id/119/400/400"
+            alt="Product image representing a backpack">
+          <h2>Backpack</h2>
+          <p class="description">A practical bag for daily use.</p>
+          <p class="price">₹899</p>
+          <button type="button">View Product</button>
+        </article>
+
+        <article class="product" id="electronics">
+          <img src="https://picsum.photos/id/160/400/400"
+            alt="Product image representing a camera">
+          <h2>Camera</h2>
+          <p class="description">Capture your favourite moments.</p>
+          <p class="price">₹18,999</p>
+          <button type="button">View Product</button>
+        </article>
+
+        <article class="product">
+          <img src="https://picsum.photos/id/180/400/400"
+            alt="Product image representing a laptop">
+          <h2>Laptop</h2>
+          <p class="description">Useful for work and learning.</p>
+          <p class="price">₹54,999</p>
+          <button type="button">View Product</button>
+        </article>
+
+        <article class="product" id="home">
+          <img src="https://picsum.photos/id/225/400/400"
+            alt="Product image representing a desk lamp">
+          <h2>Desk Lamp</h2>
+          <p class="description">A simple light for your study desk.</p>
+          <p class="price">₹749</p>
+          <button type="button">View Product</button>
+        </article>
+
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 ShopGrid. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>

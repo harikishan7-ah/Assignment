@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive TaskFlow landing page built using CSS Grid and Flexbox.">
+  <title>TaskFlow | Grid + Flexbox Landing Page</title>
+
+  <style>
+    :root {
+      --blue: #3a5bff;
+      --dark: #0f1535;
+      --muted: #555d7e;
+      --light: #f2f4ff;
+      --white: #ffffff;
+      --border: #dfe3f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1100px, 92%);
+      margin-inline: auto;
+    }
+
+    /* FLEXBOX: Navbar */
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a:not(.btn):hover {
+      color: var(--blue);
+    }
+
+    /* Shared buttons */
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      padding: 11px 22px;
+      border: 2px solid var(--blue);
+      border-radius: 9px;
+      background: var(--blue);
+      color: var(--white);
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: #2947df;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+    }
+
+    .btn-outline:hover {
+      color: var(--white);
+    }
+
+    /* GRID: Hero uses two columns */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 48px;
+      padding-block: 76px;
+    }
+
+    .hero h1 {
+      max-width: 650px;
+      margin-bottom: 20px;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.12;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      max-width: 520px;
+      margin-bottom: 26px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* FLEXBOX: Hero button group */
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 7 / 5;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(15, 21, 53, 0.12);
+    }
+
+    /* Features section */
+    .features {
+      padding-block: 70px;
+      background: var(--light);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 10px;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* GRID: Feature cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    /* FLEXBOX: Icon and text inside a feature card */
+    .feature-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .feature-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #e8ecff;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+    }
+
+    /* Pricing section */
+    .pricing {
+      padding-block: 76px;
+    }
+
+    /* GRID: Three pricing columns */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 22px;
+    }
+
+    /* FLEXBOX: Pricing card content stacked vertically */
+    .plan {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--white);
+    }
+
+    .plan h3 {
+      font-size: 1.35rem;
+    }
+
+    .price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .plan-description {
+      flex-grow: 1;
+      color: var(--muted);
+    }
+
+    .plan .btn {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .plan-featured {
+      border: 2px solid var(--blue);
+      box-shadow: 0 12px 32px rgba(58, 91, 255, 0.13);
+    }
+
+    .popular {
+      align-self: flex-start;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #e8ecff;
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* FLEXBOX: Footer content */
+    footer {
+      background: var(--dark);
+      color: #dce1ff;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-block: 26px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tablet layout */
+    @media (max-width: 820px) {
+      .nav-inner {
+        padding-block: 16px;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-block: 48px;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-inline: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        max-width: 650px;
+        margin-inline: auto;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin-inline: auto;
+      }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 520px) {
+      .wrap {
+        width: 90%;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero h1 {
+        font-size: 2.15rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .features,
+      .pricing {
+        padding-block: 48px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 18px;
+      }
+
+      .plan {
+        padding: 22px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FLEXBOX: Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="wrap nav-inner">
+      <a class="logo" href="#home">TaskFlow</a>
+
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a class="btn" href="#pricing">Get started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="home">
+
+    <!-- GRID: Hero section -->
+    <header class="wrap hero">
+      <div>
+        <h1>Manage every task in one calm place.</h1>
+        <p>
+          Plan projects, assign work, collaborate with your team,
+          and meet deadlines without the chaos.
+        </p>
+
+        <!-- FLEXBOX: Button group -->
+        <div class="hero-buttons">
+          <a class="btn" href="#pricing">Get started</a>
+          <a class="btn btn-outline" href="#features">Explore features</a>
+        </div>
+      </div>
+
+      <img
+        class="hero-image"
+        src="https://picsum.photos/id/0/700/520"
+        alt="Workspace with a laptop and coffee"
+      >
+    </header>
+
+    <!-- GRID: Feature cards -->
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Why teams love TaskFlow</h2>
+          <p>
+            Everything your team needs to organise work and
+            make progress together.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">✅</span>
+            <div>
+              <h3>Simple boards</h3>
+              <p>Organise tasks and track project progress with clear boards.</p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">⏰</span>
+            <div>
+              <h3>Smart reminders</h3>
+              <p>Keep important deadlines in sight and stay on schedule.</p>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">🤝</span>
+            <div>
+              <h3>Team sharing</h3>
+              <p>Share updates, assign responsibilities, and work together.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID: Pricing plans -->
+    <section class="pricing wrap" id="pricing">
+      <div class="section-heading">
+        <h2>Simple, transparent pricing</h2>
+        <p>Choose a plan that works for your team.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <article class="plan">
+          <h3>Free</h3>
+          <p class="price">₹0 <small>/ month</small></p>
+          <p class="plan-description">
+            One project, three members, and basic task management.
+          </p>
+          <a class="btn btn-outline" href="#contact">Choose Free</a>
+        </article>
+
+        <article class="plan plan-featured">
+          <span class="popular">MOST POPULAR</span>
+          <h3>Pro</h3>
+          <p class="price">₹499 <small>/ month</small></p>
+          <p class="plan-description">
+            Unlimited projects, up to 20 members, and priority support.
+          </p>
+          <a class="btn" href="#contact">Choose Pro</a>
+        </article>
+
+        <article class="plan">
+          <h3>Team</h3>
+          <p class="price">₹1,499 <small>/ month</small></p>
+          <p class="plan-description">
+            Advanced collaboration and tools for growing teams.
+          </p>
+          <a class="btn btn-outline" href="#contact">Choose Team</a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLEXBOX: Footer -->
+  <footer id="contact">
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 TaskFlow. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="#contact">Privacy</a>
+        <a href="#contact">Terms</a>
+        <a href="mailto:harikishanyadav076@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

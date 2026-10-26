@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A multi-page student project featuring Home, About, Registration and Contact pages.">
+    <meta name="author" content="Harikishan Yadav">
+    <title>Multi-Page Project - Home</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #222;
+            background-color: #f4f6f9;
+        }
+
+        header {
+            background-color: #1f3a93;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            margin: 3px;
+            border-radius: 4px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background-color: #405bb0;
+            text-decoration: underline;
+        }
+
+        .page {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .page:target,
+        body:not(:has(.page:target)) #home {
+            display: block;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #aaa;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e8ecf5;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            font: inherit;
+        }
+
+        button {
+            background-color: #1f3a93;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #14265f;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+        }
+
+        footer a {
+            color: #1f3a93;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Harikishan's Website</h1>
+        <p>BCA Artificial Intelligence Student | Learning Web Development</p>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#registration">Registration</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page">
+            <h2>Home</h2>
+
+            <p>
+                Welcome to my website! I am a BCA Artificial Intelligence
+                student learning HTML and front-end development.
+                This project demonstrates navigation, lists, images,
+                tables and forms using HTML and CSS.
+            </p>
+
+            <img
+                src="https://picsum.photos/id/1018/800/350"
+                alt="Mountain landscape"
+                width="800"
+                height="350">
+
+            <h3>Explore This Website</h3>
+
+            <ul>
+                <li><a href="#about">Learn about me</a></li>
+                <li><a href="#registration">Register for a workshop</a></li>
+                <li><a href="#contact">Contact me</a></li>
+            </ul>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page">
+            <h2>About Me</h2>
+
+            <p>
+                Hello! I am Harikishan Yadav, a BCA Artificial Intelligence
+                student. I am learning programming, web development and
+                computer science fundamentals.
+            </p>
+
+            <h3>My Details</h3>
+
+            <table>
+                <caption>Student Information</caption>
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>Harikishan Yadav</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Course</th>
+                        <td>BCA Artificial Intelligence</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Skills I Am Learning</th>
+                        <td>HTML, CSS, Java and DSA</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Interests</th>
+                        <td>Technology, coding and problem-solving</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>My Learning Goals</h3>
+            <ul>
+                <li>Build responsive websites.</li>
+                <li>Improve my programming skills.</li>
+                <li>Learn data structures and algorithms.</li>
+            </ul>
+        </section>
+
+        <!-- REGISTRATION PAGE -->
+        <section id="registration" class="page">
+            <h2>Workshop Registration</h2>
+
+            <p>Fill in the form to practise HTML form elements.</p>
+
+            <form action="#" method="get">
+                <p>
+                    <label for="student-name">Full Name</label>
+                    <input
+                        type="text"
+                        id="student-name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required>
+                </p>
+
+                <p>
+                    <label for="student-email">Email Address</label>
+                    <input
+                        type="email"
+                        id="student-email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+                </p>
+
+                <p>
+                    <label for="dob">Date of Birth</label>
+                    <input
+                        type="date"
+                        id="dob"
+                        name="dob">
+                </p>
+
+                <p>
+                    <label for="level">Experience Level</label>
+                    <select id="level" name="level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="course">Choose a Workshop</label>
+                    <select id="course" name="course">
+                        <option value="html">HTML Basics</option>
+                        <option value="css">CSS Fundamentals</option>
+                        <option value="java">Java Programming</option>
+                    </select>
+                </p>
+
+                <p>
+                    <button type="submit">Register</button>
+                    <button type="reset">Reset Form</button>
+                </p>
+            </form>
+
+            <p>
+                Note: This is a demonstration form. It does not save
+                registrations to a server.
+            </p>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page">
+            <h2>Contact Me</h2>
+
+            <p>
+                Use this sample form to practise collecting a name,
+                email address and message.
+            </p>
+
+            <form action="#" method="get">
+                <p>
+                    <label for="contact-name">Your Name</label>
+                    <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        required>
+                </p>
+
+                <p>
+                    <label for="contact-email">Your Email</label>
+                    <input
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        required>
+                </p>
+
+                <p>
+                    <label for="message">Your Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Write your message here"
+                        required></textarea>
+                </p>
+
+                <button type="submit">Send Message</button>
+                <button type="reset">Clear Form</button>
+            </form>
+
+            <h3>Contact Information</h3>
+            <address>
+                Student: Harikishan Yadav<br>
+                Course: BCA Artificial Intelligence
+            </address>
+
+            <p>
+                Email:
+                <a href="mailto:harikishanyadav076@gmail.com">
+                    harikishanyadav076@gmail.com
+                </a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <hr>
+        <p>
+            <small>
+                &copy; 2026 Harikishan Yadav.
+                Student HTML Project.
+            </small>
+        </p>
+
+        <a href="#home">Back to Home</a>
+    </footer>
+
+</body>
+</html>

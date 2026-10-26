@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive student project demonstrating CSS media queries and breakpoints.">
+  <title>Responsive Breakpoints Project</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    /* Header */
+    header {
+      background: #1f3a93;
+      color: white;
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1100px;
+      width: 100%;
+      margin: auto;
+      padding: 32px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #1f3a93;
+    }
+
+    .intro {
+      margin-bottom: 25px;
+    }
+
+    /* Desktop: 4 columns */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      overflow-wrap: anywhere;
+    }
+
+    .card h2 {
+      color: #1f3a93;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #ffe8cc;
+      font-size: 0.9rem;
+    }
+
+    /* Test log */
+    .test-section {
+      margin-top: 35px;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 480px;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background: #1f3a93;
+      color: white;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 18px;
+      text-align: center;
+      background: #1f3a93;
+      color: white;
+    }
+
+    /* Breakpoint 1: tablets and small laptops */
+    @media (max-width: 1024px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Breakpoint 2: large phones */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      main {
+        padding: 25px 16px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* Breakpoint 3: small phones */
+    @media (max-width: 480px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Extra protection for very narrow screens */
+    @media (max-width: 320px) {
+      main {
+        padding: 20px 10px;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Harikishan's Site</div>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <h1>Responsive Web Project</h1>
+    <p class="intro">
+      This project demonstrates responsive design using CSS Grid,
+      media queries, and multiple screen-size breakpoints.
+    </p>
+
+    <section class="cards" id="projects">
+      <article class="card">
+        <h2>Home</h2>
+        <p>Welcome to my responsive website project.</p>
+      </article>
+
+      <article class="card" id="about">
+        <h2>About</h2>
+        <p>I am a BCA Artificial Intelligence student learning web development.</p>
+      </article>
+
+      <article class="card">
+        <h2>Projects</h2>
+        <p>I am practising HTML and CSS through 45 assignments.</p>
+      </article>
+
+      <article class="card" id="contact">
+        <h2>Contact</h2>
+        <p>Email: harikishanyadav076@gmail.com</p>
+      </article>
+    </section>
+
+    <span class="badge">
+      Responsive layout: 4 columns → 2 columns → 1 column
+    </span>
+
+    <section class="test-section">
+      <h2>Responsive Testing Log</h2>
+      <p>Test the page at different widths using Chrome DevTools.</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Screen size</th>
+              <th>Expected layout</th>
+              <th>Verification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Desktop: 1440px</td>
+              <td>4 columns</td>
+              <td>To be tested</td>
+            </tr>
+            <tr>
+              <td>Tablet: 820px</td>
+              <td>2 columns</td>
+              <td>To be tested</td>
+            </tr>
+            <tr>
+              <td>Mobile: 390px</td>
+              <td>1 column, stacked header</td>
+              <td>To be tested</td>
+            </tr>
+            <tr>
+              <td>Narrow mobile: 280px</td>
+              <td>1 column, compact spacing</td>
+              <td>To be tested</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Harikishan Yadav | Responsive Design Project</p>
+  </footer>
+</body>
+</html>
